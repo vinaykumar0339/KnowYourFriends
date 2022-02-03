@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>802991350945-s1cjvj9t8de14foepit0bu2f4maamugl.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.802991350945-s1cjvj9t8de14foepit0bu2f4maamugl</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBcxnpVD-dgiHF0KKuv8lPANhtfrDoOKwM</string>
+	<key>GCM_SENDER_ID</key>
+	<string>802991350945</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.KnowYourFriends</string>
+	<key>PROJECT_ID</key>
+	<string>knowyourfriends-b2055</string>
+	<key>STORAGE_BUCKET</key>
+	<string>knowyourfriends-b2055.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:802991350945:ios:6c47444422922c6346bce0</string>
+</dict>
+</plist>
