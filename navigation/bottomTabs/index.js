@@ -4,6 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeTab from './HomeTab';
 import ProfileTab from './ProfileTab';
 import { COLORS, CustomIcons } from '../../resources'
+import { TABS } from '../screens';
 
 const Tabs = createBottomTabNavigator();
 
@@ -16,7 +17,7 @@ const BottomTabs = () => {
         }}
     >
         <Tabs.Screen 
-            name='HomeTab' 
+            name={TABS.homeTab} 
             component={HomeTab} 
             options={{
                 headerShown: false,
@@ -27,7 +28,7 @@ const BottomTabs = () => {
             }}
         />
         <Tabs.Screen 
-            name='ProfileTab' 
+            name={TABS.profileTab}
             component={ProfileTab} 
             options={{
                 headerShown: false,
