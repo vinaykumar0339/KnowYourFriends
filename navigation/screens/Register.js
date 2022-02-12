@@ -134,6 +134,7 @@ const Register = () => {
               textColor: COLORS.red,
             }
           )
+          break;
         }
         case 'weak-password': {
           showSnackBar(
@@ -144,7 +145,7 @@ const Register = () => {
               textColor: COLORS.red,
             }
           )
-          break
+          break;
         }
         case 'operation-not-allowed': {
           showSnackBar(
@@ -159,9 +160,10 @@ const Register = () => {
         }
         case 'invalid-email': {
           setEmailError('invalid email.')
+          break;
         }
         default:
-          break
+          break;
       }
       setLoading(false)
       setDisabled(false)
