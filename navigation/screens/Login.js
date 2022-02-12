@@ -1,15 +1,9 @@
 // libraries
 import {
     View,
-    Text,
     SafeAreaView,
     StyleSheet,
     useWindowDimensions,
-    KeyboardAvoidingView,
-    Platform,
-    ScrollView,
-    ImageBackground,
-    Image,
     TouchableOpacity,
 } from "react-native";
 import React, { useEffect, useState } from 'react';
@@ -19,9 +13,11 @@ import { Input, Button } from 'react-native-elements';
 import auth from "@react-native-firebase/auth";
 import Snackbar from "react-native-snackbar";
 
+
 // modules
 import { SCREENS } from '.';
 import { COLORS, CustomIcons } from '../../resources';
+import { checkNetWorkConnection, offlineSnackBar, showSnackBar } from "../../utils/utils";
 
 const Login = () => {
 
@@ -101,24 +97,19 @@ const Login = () => {
         }
     }
 
-    const showSnackBar = (text, duration, action) => {
-        Snackbar.show({
-            text,
-            duration,
-            action
-        })
-    }
-
     const handleSubmit = async () => {
+        const isNetworkActive = await checkNetWorkConnection();
+        if (!isNetworkActive) {
+            offlineSnackBar()
+            return
+        }
         setLoading(true)
         setDisabled(true)
         try {
             const authResponse = await auth().signInWithEmailAndPassword(email, password);
-            console.log(authResponse, "auth");
             setLoading(false)
             setDisabled(false)
         } catch (e) {
-            console.log(e.code,e.userInfo, "login error");
             const { code } = e.userInfo;
             switch (code) {
                 case 'user-not-found': {
@@ -166,7 +157,7 @@ const Login = () => {
             style={styles.container}
         >
             <View>
-                <Animated.View style={registerButtonStyles}>
+                <Animated.View style={[{ zIndex: 11 }, registerButtonStyles]}>
                     <Button
                       containerStyle={styles.registerButtonContainer}
                       buttonStyle={styles.registerButton}

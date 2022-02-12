@@ -1,10 +1,16 @@
 import { Text, SafeAreaView } from 'react-native';
 import React from 'react';
+import { Button } from "react-native-elements";
+import auth from "@react-native-firebase/auth";
 
 const Profile = () => {
+
   return (
     <SafeAreaView style={{flex: 1, justifyContent: 'space-between', alignItems: 'center'}}>
-        <Text>Profile screen</Text>
+      <Button
+        title={'Logout'}
+        onPress={() => auth().signOut()}
+      />
     </SafeAreaView>
   );
 };
