@@ -106,9 +106,9 @@ const Login = () => {
         setLoading(true)
         setDisabled(true)
         try {
-            const authResponse = await auth().signInWithEmailAndPassword(email, password);
-            setLoading(false)
-            setDisabled(false)
+            await auth().signInWithEmailAndPassword(email, password);
+            // setLoading(false)
+            // setDisabled(false) // don't need this it automatically goes to home screen.
         } catch (e) {
             const { code } = e.userInfo;
             switch (code) {

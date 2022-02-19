@@ -8,7 +8,10 @@ const ProfileStack = createNativeStackNavigator();
 const ProfileTab = () => {
   return (
     <ProfileStack.Navigator>
-        <ProfileStack.Screen 
+        <ProfileStack.Screen
+            options={{
+              headerShown: false
+            }} 
             name={SCREENS.profile} 
             component={Profile}
         />

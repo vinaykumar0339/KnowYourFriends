@@ -11,6 +11,7 @@ import { useNavigation } from '@react-navigation/native';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import { Input, Button } from 'react-native-elements';
 import auth from "@react-native-firebase/auth";
+import firestore from "@react-native-firebase/firestore";
 import Snackbar from "react-native-snackbar";
 
 // modules
@@ -22,6 +23,7 @@ const Register = () => {
 
   const navigation = useNavigation();
   const { height } = useWindowDimensions();
+  const usersCollections = firestore().collection('users');
 
   const slider = useSharedValue(height);
 
@@ -95,6 +97,13 @@ const Register = () => {
       } else {
         setPasswordError('password requires min 6 char.')
       }
+
+      if (confirmPassword === value) {
+        setConfirmPassordError('')
+      } else {
+        setConfirmPassordError('password not match.')
+      }
+
     } else if (key === 'confirmPassword') {
       setConfirmPassord(value)
       if (password === value) { // while checking... confirmPassword not updated at this time. it show one word less.
@@ -118,10 +127,16 @@ const Register = () => {
     setLoading(true)
     setDisabled(true)
     try {
-      const authResponse = await auth().createUserWithEmailAndPassword(email, password);
-      console.log(authResponse);
-      setLoading(false)
-      setDisabled(false)
+      const response = await auth().createUserWithEmailAndPassword(email, password);
+      const user = response.user;
+      await usersCollections
+        .doc(user.uid)
+        .set({
+          name: user.displayName || user.email.split("@")[0],
+          profileUri: null,
+          email: user.email,
+          phoneNumber: null,
+        });
     } catch (e) {
       const { code } = e.userInfo;
       switch (code) {

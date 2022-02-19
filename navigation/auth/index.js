@@ -1,4 +1,3 @@
-import { View, Text } from 'react-native';
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Login from '../screens/Login';
@@ -11,11 +10,20 @@ const Authentication = () => {
   return (
     <AuthStack.Navigator
         screenOptions={{
-            headerShown: false
+            headerShown: false,
+            animation: 'slide_from_right',
+            orientation: 'portrait'
         }}
     >
-        <AuthStack.Screen name={SCREENS.login} component={Login} />
-        <AuthStack.Screen name={SCREENS.register} component={Register} />
+        <AuthStack.Screen
+          name={SCREENS.login}
+          component={Login}
+
+        />
+        <AuthStack.Screen
+          name={SCREENS.register}
+          component={Register}
+        />
     </AuthStack.Navigator>
   );
 };
