@@ -1,4 +1,4 @@
-import { View, SafeAreaView, StyleSheet, Image, ImageBackground, Text, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { View, SafeAreaView, StyleSheet, Image, ImageBackground, Text, TouchableOpacity, ActivityIndicator, Button } from 'react-native';
 import React, { useLayoutEffect, useState } from 'react';
 import auth from "@react-native-firebase/auth";
 import firestore from "@react-native-firebase/firestore";
@@ -7,6 +7,8 @@ import { COLORS, CustomIcons } from '../../resources';
 import _ from 'lodash';
 import { launchImageLibrary } from 'react-native-image-picker';
 import { RNToasty } from 'react-native-toasty';
+import ReactNativeForegroundService from "@supersami/rn-foreground-service";
+
 
 const Profile = () => {
 
@@ -99,6 +101,15 @@ const Profile = () => {
           color={COLORS.primary}
         />
       </View>
+      <Button 
+        title='logout'
+        onPress={() => {
+          ReactNativeForegroundService.remove_task('locationUpdate')
+          ReactNativeForegroundService.stop()
+          auth()
+            .signOut()
+        }}
+      />
     </SafeAreaView>
   );
 };
